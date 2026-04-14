@@ -1,0 +1,165 @@
+{% assign sid = section.id   %}
+{%- capture banner-style -%}
+	{%- if blocks.size > 0 %}
+      {%- for block in blocks -%}
+        {%- assign id = block.id -%}
+        {%- assign type = block.type -%}
+        {%- case type -%} 
+			{% when 'hd' %}
+			#laber_{{sid}} h3#b_{{id}}{
+				margin-bottom:{{block.settings.mg_bottom}}px;
+                text-transform:{{block.settings.text_transform}}; 
+                letter-spacing:{{block.settings.ls_text}}; 
+                {% if block.settings.lh_text >0 %}line-height:{{block.settings.lh_text}}px; {% endif %} 
+                font-size:{{block.settings.fs_text}}px; 
+                color:{{block.settings.color}}; 
+                font-weight:{{block.settings.fw_text}};
+				
+			}
+            #laber_{{sid}} h3#b_{{id}} span.first ,
+            #laber_{{sid}} h3#b_{{id}} span.marked,
+            #laber_{{sid}} h3#b_{{id}} span.last {
+              color:{{block.settings.color_mark}}; 
+            }
+            @media (max-width: 1024px) {
+				#laber_{{sid}} h3#b_{{id}}{
+					font-size:{{block.settings.mobile_font_text}}px;
+					margin-bottom:{{block.settings.mobile_mg_bottom}}px;
+				}
+          	}
+			{% when 'subhd' %}
+			#laber_{{sid}} h5#b_{{id}}{
+				margin-bottom:{{block.settings.mg_bottom}}px;
+				text-transform:{{block.settings.text_transform}}; 
+				letter-spacing:{{block.settings.ls_text}};
+				{% if block.settings.lh_text >0 %}line-height:{{block.settings.lh_text}}px; {% endif %} 
+				font-size:{{block.settings.fs_text}}px; 
+				color:{{block.settings.color}}; 
+				font-weight:{{block.settings.fw_text}};
+			}
+            #laber_{{sid}} h5#b_{{id}} span.first ,
+            #laber_{{sid}} h5#b_{{id}} span.marked,
+            #laber_{{sid}} h5#b_{{id}} span.last {
+              color:{{block.settings.color_mark}}; 
+            }
+			@media (max-width: 1024px) {
+				#laber_{{sid}} h5#b_{{id}}{
+					font-size:{{block.settings.mobile_font_text}}px;
+					margin-bottom:{{block.settings.mobile_mg_bottom}}px;
+				}
+          	}
+            {% when 'txt' %}
+              #laber_{{sid}} div#b_{{id}} p{
+                  margin-bottom:{{block.settings.mg_bottom}}px; 
+                  letter-spacing:{{block.settings.ls_text}}; 
+				  text-transform:{{block.settings.text_transform}}; 
+                  {% if block.settings.lh_text >0 %}line-height:{{block.settings.lh_text}}px; {% endif %} 
+                  font-size:{{block.settings.fs_text}}px; 
+                  color:{{block.settings.color}}; 
+                  font-weight:{{block.settings.fw_text}};
+              }
+              @media (max-width: 1024px) {
+                  #laber_{{sid}} div#b_{{id}} p{
+                      font-size:{{block.settings.mobile_font_text}}px;
+                      margin-bottom:{{block.settings.mobile_mg_bottom}}px;
+                  }
+              }
+              {% when 'label' %}
+			  #laber_{{sid}} div#b_{{id}}.label{
+					margin-bottom:{{block.settings.mg_bottom}}px;
+				}
+              #laber_{{sid}} div#b_{{id}}.label > span{
+                background-color: {{block.settings.cl_bg}}; 
+                color:{{block.settings.cl_txt}}; 
+                font-size:{{block.settings.fs_text}}px; 
+                font-weight:{{block.settings.fw_text}};
+                text-transform:{{block.settings.button_transform}};
+                moz-transition: all .4s ease-in-out;
+                -o-transition: all .4s ease-in-out;
+                -webkit-transition: all .4s ease-in-out;
+                transition: all .4s ease-in-out;
+                display: inline-block;
+                padding:{{block.settings.pd}};
+                height: 25px;
+                line-height: 25px;
+				border-radius: 2px;
+              } 
+            @media (max-width: 1024px) {
+              #laber_{{sid}} div#b_{{id}}.label{
+            	margin-bottom:{{block.settings.mobile_mg_bottom}}px;
+              }
+            }
+            {% when 'btn' %}
+              #laber_{{sid}} #b_{{id}}.btn {
+                font-size:{{block.settings.fs_text}}px; 
+                font-weight:{{block.settings.fw_text}};
+                text-transform:{{block.settings.button_transform}};
+              }
+              #laber_{{sid}} #b_{{id}}.link{
+                  color:{{block.settings.cl_txt}}; 
+                  font-size:{{block.settings.fs_text}}px; 
+                  font-weight:{{block.settings.fw_text}};
+                  text-transform:{{block.settings.button_transform}};
+                  justify-content: center;
+                  pointer-events: auto;
+                  position: relative;
+              }	
+              #laber_{{sid}} #b_{{id}}.link:before {
+                  content: "";
+                  height: 1px;
+                  bottom: 0;
+                  left: 0;
+                  right: 0;
+                  text-transform: capitalize;
+                  background-color: {{block.settings.cl_txt}};
+                  display: block;
+                  position: absolute;
+                  -webkit-transition: all .24s linear 0ms;
+                  -khtml-transition: all .24s linear 0ms;
+                  -moz-transition: all .24s linear 0ms;
+                  -ms-transition: all .24s linear 0ms;
+                  -o-transition: all .24s linear 0ms;
+                  transition: all .24s linear 0ms;
+              }
+              #laber_{{sid}} #b_{{id}}.link:after {
+                  content: "";
+                  height: 1px;
+                  bottom: 0;
+                  left: 100%;
+                  right: 0;
+                  background-color: {{block.settings.cl_txt_hover}};
+                  display: block;
+                  position: absolute;
+                  opacity: 0;
+                  -webkit-transition: all .24s linear 0ms;
+                  -khtml-transition: all .24s linear 0ms;
+                  -moz-transition: all .24s linear 0ms;
+                  -ms-transition: all .24s linear 0ms;
+                  -o-transition: all .24s linear 0ms;
+                  transition: all .24s linear 0ms;
+              }
+              #laber_{{sid}} #b_{{id}}.link:hover{
+                    color:{{block.settings.cl_txt_hover}}; 
+              }
+              #laber_{{sid}} #b_{{id}}.link:hover:before {
+                  right: 100%;
+                  opacity: 0;
+              }
+              #laber_{{sid}} #b_{{id}}.link:hover:after {
+                  left: 0;
+                  opacity: 1;
+              }
+            @media (max-width: 1024px) {
+              #laber_{{sid}} #b_{{id}}.btn ,
+              #laber_{{sid}} #b_{{id}}.link{
+                font-size:{{block.settings.mobile_font_text}}px;
+              }
+            }	
+        {%endcase%}
+      {%- endfor -%}
+	{%- endif -%}
+{%- endcapture -%}
+
+{% style%}
+{{ banner-style | strip_newlines | remove:"  "}}
+{% endstyle%}

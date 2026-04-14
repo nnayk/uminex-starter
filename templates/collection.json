@@ -1,0 +1,244 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "settings": {
+        "h_position": "left",
+        "v_position": "middle",
+        "txt_align": "center",
+        "bg": "#ffffff",
+        "cl_border": "#f2f2f6",
+        "b_height": 60,
+        "mg_bottom": 20,
+        "mobile_bg": "#f2f2f6",
+        "mobile_ht": 40,
+        "mobile_mg_bottom": 20
+      }
+    },
+    "sub-collection": {
+      "type": "sub-collection",
+      "blocks": {
+        "3cd706a4-cc1b-4e7a-94d4-44e18ea4f701": {
+          "type": "collection",
+          "settings": {
+            "url": "shopify:\/\/collections\/men-clothing",
+            "title": "Men clothing"
+          }
+        },
+        "e0dc387f-2eaf-40fb-a356-7325019fe15e": {
+          "type": "collection",
+          "settings": {
+            "url": "shopify:\/\/collections\/shoes-for-men",
+            "title": "Shoes for men"
+          }
+        },
+        "2e238be5-2b74-455b-b748-7d8d75eeb0c0": {
+          "type": "collection",
+          "settings": {
+            "url": "shopify:\/\/collections\/bags-for-men",
+            "title": "Bags for men"
+          }
+        },
+        "7b9e49b8-a51b-4f33-9d8a-1d09ee99212d": {
+          "type": "collection",
+          "settings": {
+            "url": "shopify:\/\/collections\/hat-for-men",
+            "title": "Hat for men"
+          }
+        },
+        "abad2968-9ce0-4684-a404-4691f689d856": {
+          "type": "collection",
+          "settings": {
+            "url": "shopify:\/\/collections\/shoes-for-women",
+            "title": "Shoes for women"
+          }
+        },
+        "15eb3ecc-1367-44ec-a0a4-c8d2efb55a27": {
+          "type": "collection",
+          "settings": {
+            "url": "shopify:\/\/collections\/women-clothing",
+            "title": "Women clothing"
+          }
+        },
+        "9caac341-666e-42c4-8b2e-a30b8e063379": {
+          "type": "collection",
+          "settings": {
+            "url": "shopify:\/\/collections\/bags-for-women",
+            "title": "Bags for women"
+          }
+        },
+        "collection_aCwzi7": {
+          "type": "collection",
+          "settings": {
+            "url": "",
+            "title": "Hat for women"
+          }
+        }
+      },
+      "block_order": [
+        "3cd706a4-cc1b-4e7a-94d4-44e18ea4f701",
+        "e0dc387f-2eaf-40fb-a356-7325019fe15e",
+        "2e238be5-2b74-455b-b748-7d8d75eeb0c0",
+        "7b9e49b8-a51b-4f33-9d8a-1d09ee99212d",
+        "abad2968-9ce0-4684-a404-4691f689d856",
+        "15eb3ecc-1367-44ec-a0a4-c8d2efb55a27",
+        "9caac341-666e-42c4-8b2e-a30b8e063379",
+        "collection_aCwzi7"
+      ],
+      "settings": {
+        "title": "",
+        "text_size": "small",
+        "text_transform": "capitalize",
+        "border": 3,
+        "use_eq_height": true,
+        "image_ratio": "ratio1_1",
+        "use-slider": true,
+        "slides-To-Scroll": 1,
+        "visible": 5,
+        "widescreen": 5,
+        "desktop": 5,
+        "laptop": 5,
+        "notebook": 4,
+        "tablet": 3,
+        "landscape": 2,
+        "portrait": 2,
+        "mobile": 1,
+        "rows": 1,
+        "autoplay": false,
+        "speed": "300",
+        "autoplay-Speed": "3000",
+        "arrows": true,
+        "fade": false,
+        "center-Mode": false,
+        "adaptive-Height": true,
+        "dots": false,
+        "infinite": false,
+        "padding": 10,
+        "vertical": false,
+        "layout": false,
+        "custom_width": 1410,
+        "cl_bg": "rgba(0,0,0,0)",
+        "cl_border": "#ebebeb",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_mb": "",
+        "pd_mb": ",,20px,"
+      }
+    },
+    "collection-header": {
+      "type": "collection-header",
+      "settings": {
+        "show_full_width": false,
+        "custom_width": 1410,
+        "show_collection_image": true,
+        "h_des": "250px",
+        "h_tb": "200px",
+        "h_mb": "150px",
+        "cl_bg": "#ffffff",
+        "mg": ",,30px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "932fc3a4-132b-4a34-b5d0-91df6362734c": {
+          "type": "menu",
+          "settings": {
+            "enable_menu_categories": true,
+            "title_categories": "Product Categories",
+            "menu": "fashion-categories"
+          }
+        },
+        "93183049-0d4f-4993-8f01-1a4d4cfb7d55": {
+          "type": "product",
+          "settings": {
+            "title": "Featured product",
+            "product_list": [
+              "bottle-cap-material-made-of-cotton",
+              "chunky-sole-leather-loafers-with-lugs",
+              "hoodie-with-hood-and-long-sleeves",
+              "jacquard-weave-handbag"
+            ]
+          }
+        },
+        "d1f87686-4bdb-47c4-a938-983ce2683a19": {
+          "type": "banner_img",
+          "settings": {
+            "image_promobox": "shopify:\/\/shop_images\/47_4.jpg",
+            "url": "shopify:\/\/products\/bottle-cap-material-made-of-cotton",
+            "use_eq_height": true,
+            "image_ratio": "ratio3_4"
+          }
+        }
+      },
+      "block_order": [
+        "932fc3a4-132b-4a34-b5d0-91df6362734c",
+        "93183049-0d4f-4993-8f01-1a4d4cfb7d55",
+        "d1f87686-4bdb-47c4-a938-983ce2683a19"
+      ],
+      "settings": {
+        "full-width": false,
+        "custom_width": 1410,
+        "cl_bg": "rgba(0,0,0,0)",
+        "cl_border": "#ebebeb",
+        "border": 0,
+        "products_per_page": 15,
+        "grid_list": "3",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "filter_right": false,
+        "enable_sorting": true,
+        "visible": 3,
+        "widescreen": 3,
+        "desktop": 3,
+        "laptop": 3,
+        "notebook": 2,
+        "tablet": 2,
+        "landscape": 2,
+        "portrait": 2,
+        "mobile": 1,
+        "padding_lr": 10,
+        "mg": ",,50px,",
+        "pd": ",,,",
+        "mg_mb": ",,30px,",
+        "pd_mb": ",,,"
+      }
+    },
+    "collection-description": {
+      "type": "collection-description",
+      "settings": {
+        "show_full_width": false,
+        "custom_width": 1410,
+        "show_collection_description": true,
+        "cl_desc": "#777777",
+        "h_des": "150px",
+        "h_tb": "100px",
+        "h_mb": "150px",
+        "cl_bg": "#ffffff",
+        "mg": ",,50px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "sub-collection",
+    "collection-header",
+    "product-grid",
+    "collection-description"
+  ]
+}

@@ -1,0 +1,155 @@
+{% include 'product-res-variables' %}
+{% assign show_secondary_image = settings.product_collection_show_secondary_image %}
+{%- assign image_border_product = settings.image_border_product -%}
+{%- assign text_transform = settings.product_text_transform_title -%}
+{%- assign show_popup = section.settings.show_popup -%}
+<div class="col-lg-6 col-md-6 col-12">
+  <div class="product-image">
+    <div class="card__media alo-border-radius" style="--alo-border-radius:{{ image_border_product }}px;">
+      <div class="media {% if show_secondary_image %} secondary_image_hover{% endif %}">
+        {% if product %}
+          <a
+            href="{{ product.url | within: collection }}"
+            class="d-block image_product cursor-default {% if product.featured_media %} ratio{% endif %}"
+            style="{{ style }}"
+            data-js-product-image
+          >
+            {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+          </a>
+        {% else %}
+          <a class="db" href="{{ routes.root_url }}admin/products">
+            <div class="image-card__img overflow-hidden ratio" style=" {{ style }}">
+              {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+              {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg w-full h-full' }}
+            </div>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-6 col-md-6 col-12">
+  <div class="product_info">
+    {%- if product.collections.size > 0 -%}
+      <div class="product-collection mb-5">
+        {% render 'product-get-collections' with product: product %}
+      </div>
+    {%- endif -%}
+    <div class="product-collection__title mb-10">
+      <h2>
+        <a href="{{ product.url }}" class="alo-text-transform" style="--alo-text-transform:{{ text_transform }}">
+          {{- product.title -}}
+        </a>
+      </h2>
+    </div>
+    <!-- Start of Judge.me code -->
+    <div style="{{ jm_style }}" class="jdgm-widget jdgm-preview-badge mb-20" data-id="{{ product.id }}">
+      {{- product.metafields.judgeme.badge -}}
+    </div>
+    <!-- End of Judge.me code -->
+
+    <div class="product-collection__price mb-30">
+      {%- if product.price_varies -%}
+        <span class="price"
+          ><span>{{ product.price_min | money }} – {{ product.price_max | money }}</span></span
+        >
+      {%- else -%}
+        {% render 'product-get-price' with price: price compare_at_price: product.compare_at_price %}
+      {%- endif -%}
+    </div>
+
+    <div class="product-collection__options mb-30">
+      {% include 'product-get-options' %}
+    </div>
+
+    <div class="button-cart-bottom mb-20">
+      {% if external_affiliate_product %}
+        <a
+          href="{{ external_affiliate_product.external_link }}"
+          rel="nofollow"
+          target="_blank"
+          class="btn product-affiliate relative add-to-cart"
+        >
+          {{ external_affiliate_product.button_name }}
+        </a>
+      {% else %}
+        {% if product.available %}
+          <div data-product-quantity class="js-quantity quantity justify-content-center focus-form">
+            <div class="inner-quantity flex">
+              <input
+                data-step="1"
+                data-min="1"
+                data-max="{{ product.variants.first.inventory_quantity }}"
+                class="input-text js_qty focus-form-input"
+                type="text"
+                size="4"
+                title="Qty"
+                value="1"
+                name="quantity"
+              >
+              <p class="qty-btn">
+                <a class="js_plus" href="#"><i class="icon-chevron-up"></i></a>
+                <a class="js_minus" href="#"><i class="icon-chevron-down"></i></a>
+              </p>
+            </div>
+          </div>
+          <button
+            type="submit"
+            class="add-to-cart js_add_to_cart_button {%if settings.disable_ajax_cart %}page_{{settings.custom_page_cart}}{%endif%} alo-border-radius"
+            style="--alo-border-radius:40px;"
+            data-pid="{{ product.variants.first.id }}"
+            data-js-product-button-add-to-cart
+          >
+            <span class="text">
+              {% if product.selected_or_first_available_variant.inventory_policy == 'continue' %}
+                {{ 'products.product.pre_order' | t }}
+              {% else %}
+                {{ 'products.product.add_to_cart' | t }}
+              {% endif %}
+            </span>
+          </button>
+        {% else %}
+          <a
+            class="add-to-cart js-btn-sold-out alo-border-radius"
+            style="--alo-border-radius:40px;"
+            onclick="location.href='{{ product.url | within: collection }}'"
+          >
+            <span class="text">{{ 'products.product.sold_out' | t }}</span></a
+          >
+        {% endif %}
+      {% endif %}
+    </div>
+    <buy-now>
+      {% assign variantCount = product.variants | size %}
+      {%- capture terms_conditions -%}
+                  {% if show_popup %}
+                      <a data-page-open-popup data-effect="mfp-move-horizontal" href="#terms-conditions">{{ 'products.product.terms_conditions' | t}}</a>
+                  {% else %}
+                      <a href="#">{{ 'products.product.terms_conditions' | t}}</a>
+                  {% endif %}   
+              {%- endcapture -%}
+      {% if show_popup %}
+        <div id="terms-conditions" class="mfp-hide mfp-with-anim size-chart-open-popup">
+          {{ product_terms_conditions_page_content }}
+        </div>
+      {% endif %}
+      <div
+        data-buyitnow-button
+        class="group-button-buyitnow {% if show_popup %}disabled{% endif %}"
+      >
+        {% if show_popup %}
+          <div class="checkbox-group prpage-term-conditions-checkbox term-conditions-checkbox-js">
+            <input type="checkbox" id="prpage-cart-term-conditions-checkbox" value="1">
+            <label for="prpage-cart-term-conditions-checkbox">
+              <span class="check"></span>
+              <span class="box"></span>
+              {{ 'products.product.checkbox_buyitnow' | t }}
+              {{ terms_conditions }}
+            </label>
+          </div>
+        {% endif %}
+        {{ form | payment_button }}
+      </div>
+    </buy-now>
+  </div>
+</div>

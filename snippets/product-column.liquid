@@ -1,0 +1,135 @@
+{% assign show_secondary_image = settings.product_collection_show_secondary_image %}
+{%- assign show_reviews = settings.product_collection_show_reviews -%}
+{%- assign show_button_add_to_cart = settings.product_collection_show_button_add_to_cart -%}
+{%- assign show_button_quick_view = settings.product_collection_show_button_quick_view -%}
+{%- assign variants_size = product.variants | size -%}
+{%- liquid
+ assign sett_equal = settings.use_eq_height_product
+  assign image_ratio = settings.image_ratio_product
+  if sett_equal 
+     case image_ratio   
+        when 'ratio2_1'
+            assign aspect_ratio = 2.0
+        when 'ratio3_2'
+            assign aspect_ratio = 1.5
+        when 'ratio4_3'
+            assign aspect_ratio = 1.333
+        when 'ratio1_1'
+            assign aspect_ratio = 1.0
+        when 'ratio3_4'
+            assign aspect_ratio = 0.75
+        when 'ratio2_3'
+            assign aspect_ratio = 0.66667
+        when 'ratio1_2'
+            assign aspect_ratio = 0.5
+     endcase 
+  endif
+  
+-%}
+{%- capture style -%}
+  {% assign ratio = aspect_ratio | default:product.featured_media.aspect_ratio %}
+  --ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;
+{%- endcapture -%}
+<div class="product-item">
+  <div class="product-collection" >
+  <div class="product-inner">
+    <div class="row">
+    <div class="product-collection__image col">
+    <div class="card__media"> 
+        <div class="media {% if show_secondary_image %} secondary_image_hover{% endif %}">
+           <a href="{{ product.url | within: collection }}" 
+            class="d-block image_product cursor-default  ratio" 
+            style="{{ style }}"
+            data-js-product-image >
+              {% render 'product-image' with card_product: product show_secondary_image: show_secondary_image %}
+            </a>
+        </div>
+        {%- if product.compare_at_price > product.price -%}
+        {%- assign sale_percent = product.price | times: 100 | divided_by: product.compare_at_price | minus: 100 | times: -1 -%}
+          <div class="product-image__overlay-top-left ">
+          <div class="label label--sale" data-js-product-label-sale>
+            {{ 'products.product.label.sale' | t: percent: sale_percent }}
+          </div>
+          </div>
+        {%- endif -%}
+     </div>
+      {% if show_button_quick_view %}
+            <div class="alo-quickview">
+                  <a href="{{ product.url }}" data-pid="{{ current_variant_id }}" class="js_quick_view button-quick-view" data-js-popup-button="quick-view" aria-label="link" >
+                    <div class="laber-loading">
+                        <div class="circle-loadding"><span></span></div>
+                    </div>
+                    <span class="text">
+                      <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.9 11.731C11.8 11.731 11.8 11.731 11.9 11.731C11.8 11.8304 11.8 11.8304 11.8 11.8304C11.3 12.3275 10.7 12.7251 9.9 13.0234C9.2 13.3216 8.4 13.4211 7.6 13.4211C6.8 13.4211 6 13.2222 5.3 12.924C4.6 12.6257 4 12.2281 3.4 11.6316C2.9 11.1345 2.4 10.4386 2.1 9.74269C1.8 9.1462 1.7 8.45029 1.7 7.65497C1.7 6.85965 1.9 6.06433 2.2 5.36842C2.5 4.5731 2.9 3.97661 3.4 3.38012C4 2.88304 4.6 2.48538 5.3 2.18713C6 1.88889 6.8 1.69006 7.6 1.69006C8.4 1.69006 9.2 1.88889 9.9 2.18713C10.6 2.48538 11.3 2.88304 11.8 3.47953C12.3 3.97661 12.7 4.67251 13.1 5.36842C13.4 6.06433 13.6 6.76023 13.6 7.65497C13.6 8.45029 13.4 9.24561 13.1 9.94152C12.8 10.538 12.4 11.1345 11.9 11.731ZM16.7 15.4094L13.6 12.3275C14.1 11.6316 14.5 10.9357 14.8 10.1404C15.1 9.34503 15.2 8.45029 15.2 7.55556C15.2 6.46199 15 5.46784 14.6 4.5731C14.2 3.67836 13.7 2.88304 13 2.18713C12.3 1.49123 11.5 0.994152 10.6 0.596491C9.7 0.19883 8.7 0 7.6 0C6.6 0 5.6 0.19883 4.6 0.596491C3.7 0.994152 2.9 1.49123 2.2 2.18713C1.5 2.88304 1 3.67836 0.6 4.67251C0.2 5.56725 0 6.5614 0 7.65497C0 8.64912 0.2 9.64327 0.6 10.6374C1 11.5322 1.6 12.3275 2.3 13.0234C3 13.7193 3.8 14.2164 4.7 14.7134C5.6 15.0117 6.6 15.2105 7.6 15.2105C8.5 15.2105 9.4 15.1111 10.2 14.8129C11 14.5146 11.8 14.117 12.4 13.6199L15.5 16.7018C15.7 16.9006 15.9 17 16.1 17C16.3 17 16.5 16.9006 16.7 16.7018C16.9 16.5029 17 16.3041 17 16.1053C17 15.807 16.9 15.6082 16.7 15.4094Z" fill="#fff"></path>
+                      </svg>
+                    </span>
+                  </a>
+            </div>  
+        {% endif %} 
+      </div>
+      <div class="info col"> 
+            <div class="product-collection__title">
+            <h2>
+              <a href="{{ product.url }}">{{ product.title}}</a>
+            </h2>
+            </div>
+            {%- if show_reviews -%}
+              <!-- Start of Judge.me code --> 
+              <div style='{{ jm_style }}' class='jdgm-widget jdgm-preview-badge'  data-id='{{ product.id }}'>
+              {{- product.metafields.judgeme.badge -}}
+              </div>  
+              <!-- End of Judge.me code -->  
+            {%- endif -%} 
+            <div class="frm-price-color">
+                <div class="product-collection__price ">
+                    {%- if product.price_varies -%}
+                      <span class="price"><span>{{ product.price_min | money }} – {{ product.price_max | money }}</span></span>
+                    {%- else -%}
+                      {% render 'product-get-price' with price: product.price compare_at_price: product.compare_at_price %}
+                    {%- endif -%}
+                </div>
+          </div>
+          {% if show_button_add_to_cart%}
+                        <div class="button-cart-bottom">
+                        {% if variants_size == 1 %}  
+                          <div class="flex alo-gap" style="--alo-gap:5px;">
+                          {% if product.available %}
+                           {% if show_quantity_box %}
+                                <div data-product-quantity class="js-quantity quantity justify-content-center focus-form">
+                                  <div class="inner-quantity flex">
+                                    
+                                    <input data-step="1" data-min="1" data-max="{{ product.variants.first.inventory_quantity }}" class="input-text js_qty focus-form-input" type= "text" size="4" title="Qty" value="1" name="quantity">
+                                    <p class="qty-btn">
+                                        <a class="js_plus" href="#"><i class="icon-chevron-up"></i></a>
+                                        <a class="js_minus" href="#"><i class="icon-chevron-down"></i></a>
+                                    </p>
+                                  </div>
+                                </div>
+                              {% endif %} 
+                              <button type="submit" class="add-to-cart js_add_to_cart_button {%if settings.disable_ajax_cart %}page_{{settings.custom_page_cart}}{%endif%}"  data-pid="{{ product.variants.first.id }}" data-js-product-button-add-to-cart>
+                                <div class="laber-loading">
+                                    <div class="circle-loadding"><span></span></div>
+                                </div>
+                                <span class="text">{% if product.selected_or_first_available_variant.inventory_policy =='continue' %}{{ 'products.product.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}</span>
+                              </button>
+                              {% else %}
+                              <a  class="add-to-cart js-btn-sold-out">
+                                <span class="text">{{'products.product.sold_out' | t  }}</span></a>
+                              {% endif %}
+                            </div>
+                            {% else %}
+                              <a href="{{ url }}" data-pid="{{ current_variant_id }}" class="js_select_options select_options">
+                                <div class="laber-loading">
+                                  <div class="circle-loadding"><span></span></div>
+                                </div>
+                                <span class="text">{{'products.grid_items.select_options' | t  }}</span>
+                              </a>
+                            {% endif %} 
+                            </div>
+                    {% endif %} 
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
