@@ -19,7 +19,7 @@
             "link_img": "",
             "open_link": "_blank",
             "hidden_content": true,
-            "h_position": "center",
+            "h_position": "left",
             "v_position": "middle",
             "txt_align": "left"
           }
@@ -35,7 +35,7 @@
         "h_tb": "400px",
         "h_mb": "350px",
         "border": 5,
-        "full_width": false,
+        "full_width": true,
         "custom_width": false,
         "container_width": 1200,
         "cl_bg": "",
