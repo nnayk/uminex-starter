@@ -60,10 +60,48 @@
         "mg_mb": "",
         "pd_mb": ""
       }
+    },
+    "benefit_yxx3kU": {
+      "type": "benefit",
+      "blocks": {
+        "shipping_6jYxGU": {
+          "type": "shipping",
+          "settings": {
+            "icon": "fa fa-truck",
+            "icon_svg": "",
+            "title": "Free Shipping",
+            "text": "Use this text to describe."
+          }
+        }
+      },
+      "block_order": [
+        "shipping_6jYxGU"
+      ],
+      "name": "1. Benefit",
+      "settings": {
+        "hidden": false,
+        "br_radius": 5,
+        "source": "2",
+        "style": "vertical",
+        "col_pr": "3",
+        "col_pr_tb": "6",
+        "col_pr_mb": "6",
+        "layout": "container",
+        "cl_bg": "#fff",
+        "cl_icon": "#fff",
+        "cl_heading": "#fff",
+        "cl_text": "#fff",
+        "cl_border": "#fff",
+        "mg": "",
+        "pd": "",
+        "mg_mb": "",
+        "pd_mb": ""
+      }
     }
   },
   "order": [
     "image_with_text_overlay_QNzUBf",
-    "banner_full_width_Epp3Vg"
+    "banner_full_width_Epp3Vg",
+    "benefit_yxx3kU"
   ]
 }
