@@ -69,7 +69,7 @@
           "settings": {
             "icon": "fa fa-truck",
             "icon_img": "shopify://shop_images/shipping-truck-icon.png",
-            "icon_svg": "#00000",
+            "icon_svg": "",
             "title": "Free Shipping",
             "text": "All orders ship free!"
           }
