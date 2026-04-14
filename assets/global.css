@@ -247,6 +247,40 @@ div.main {
   flex-wrap: wrap;
 }
 
+/* Newsletter popup: circular subscribe button */
+.wrap-newslette-popup .signup-newsletter-form .newsletter-popup__submit {
+  width: 52px;
+  height: 52px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.wrap-newslette-popup .signup-newsletter-form .newsletter-popup__submit .newsletter-popup__submit-icon {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Homepage: show the 3 promo banners side-by-side (instead of stacked) */
+.template-index #shopify-section-image_with_text_overlay_KnRXF6,
+.template-index #shopify-section-image_with_text_overlay_nmGLnT,
+.template-index #shopify-section-image_with_text_overlay_QGG8aT {
+  display: inline-block;
+  width: 33.3333%;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+  .template-index #shopify-section-image_with_text_overlay_KnRXF6,
+  .template-index #shopify-section-image_with_text_overlay_nmGLnT,
+  .template-index #shopify-section-image_with_text_overlay_QGG8aT {
+    width: 100%;
+    display: block;
+  }
+}
+
 .alo-image {
   line-height: 1;
   position: relative;

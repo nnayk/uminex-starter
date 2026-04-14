@@ -72,7 +72,15 @@
                     <input class="women" type="radio" name="gender" value="women" checked /> <label>Women</label>-->
                   </div>
                   {%endcomment%}
-                  <div class="col-auto"><button type="submit" class="btn btn-theme">{{section.settings.button_newsletter}}</button></div>
+                  <div class="col-auto">
+                    <button
+                      type="submit"
+                      class="btn btn-theme newsletter-popup__submit"
+                      aria-label="{{ section.settings.button_newsletter | escape }}"
+                    >
+                      <span class="newsletter-popup__submit-icon" aria-hidden="true">→</span>
+                    </button>
+                  </div>
                </div>          
             </form>  
             <div class="do-not-show-again checkbox clearfix">
