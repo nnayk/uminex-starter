@@ -49,11 +49,11 @@
       ],
       "name": "Banner images full width",
       "settings": {
-        "use_custom_h": "2",
+        "use_custom_h": "3",
         "h_des": "650px",
         "h_tb": "500px",
         "h_mb": "350px",
-        "full_width": true,
+        "full_width": false,
         "cl_bg": "#fff",
         "mg": "",
         "pd": "",
